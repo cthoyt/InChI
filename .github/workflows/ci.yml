@@ -66,11 +66,11 @@ jobs:
 
       - name: Run executable tests
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: uv run -m pytest INCHI-1-TEST/tests/test_executable
+        run: uv run --directory ./INCHI-1-TEST -m pytest INCHI-1-TEST/tests/test_executable
 
       - name: Run multithreading test
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: uv run INCHI-1-TEST/tests/test_library/test_multithreading.py
+        run: uv run --directory ./INCHI-1-TEST INCHI-1-TEST/tests/test_library/test_multithreading.py
         timeout-minutes: 1
 
       - uses: ./.github/actions/regression_tests
