@@ -56,7 +56,7 @@ jobs:
           enable-cache: true
 
       - name: Install test dependencies
-        run: uv pip install ./INCHI-1-TEST
+        run: uv sync
 
       - id: build
         run: ./INCHI-1-TEST/build_with_cmake.sh all
