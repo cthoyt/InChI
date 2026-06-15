@@ -66,7 +66,7 @@ jobs:
 
       - name: Run executable tests
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: uv run pytest INCHI-1-TEST/tests/test_executable
+        run: uv run -m pytest INCHI-1-TEST/tests/test_executable
 
       - name: Run multithreading test
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
