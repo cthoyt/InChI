@@ -21,30 +21,6 @@ wheels = [
 ]
 
 [[package]]
-name = "inchi-tests"
-version = "1.0.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "pydantic" },
-    { name = "pytest" },
-]
-
-[package.optional-dependencies]
-invariance-tests = [
-    { name = "numpy" },
-    { name = "rdkit" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "numpy", marker = "extra == 'invariance-tests'", specifier = "<2.0.0" },
-    { name = "pydantic", specifier = "==2.11.5" },
-    { name = "pytest", specifier = "==8.3.5" },
-    { name = "rdkit", marker = "extra == 'invariance-tests'", specifier = "==2023.9.6" },
-]
-provides-extras = ["invariance-tests"]
-
-[[package]]
 name = "iniconfig"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -230,6 +206,30 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/05/f6/3a0063ef9e868cf5fbc6308edc80e2a04d3627088a0eb801d744acdcfaa7/rdkit-2023.9.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dc43b8af98866d851467cb9eea8e636c9c192c589476ed0e4930db204e9e8b98", size = 34757246, upload-time = "2024-04-27T11:00:16.423Z" },
     { url = "https://files.pythonhosted.org/packages/46/46/85acf7041c6295b0c8a15c23e36604ea48dc78f3691bbc984a60c8ebf1c5/rdkit-2023.9.6-cp312-cp312-win_amd64.whl", hash = "sha256:e6e09f47df092511d756b3b1a38a98e66e9a6944e0ed09b8d989381148fa4b7f", size = 20988528, upload-time = "2024-04-27T11:00:21.558Z" },
 ]
+
+[[package]]
+name = "sdf-pipeline"
+version = "1.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "pydantic" },
+    { name = "pytest" },
+]
+
+[package.optional-dependencies]
+invariance-tests = [
+    { name = "numpy" },
+    { name = "rdkit" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "numpy", marker = "extra == 'invariance-tests'", specifier = "<2.0.0" },
+    { name = "pydantic", specifier = "==2.11.5" },
+    { name = "pytest", specifier = "==8.3.5" },
+    { name = "rdkit", marker = "extra == 'invariance-tests'", specifier = "==2023.9.6" },
+]
+provides-extras = ["invariance-tests"]
 
 [[package]]
 name = "typing-extensions"
