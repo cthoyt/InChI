@@ -41,8 +41,12 @@ def run_inchi_exe(request, tmp_path: Path) -> Callable:
         if "ami" in args.lower():
             raise ValueError("'AMI' is not supported by the test wrapper.")
 
-        exe_path: str = request.config.getoption("--exe-path")
-        if not Path(exe_path).exists():
+        exe_path_option: str = request.config.getoption("--exe-path")
+        if exe_path_option is None:
+            raise ValueError("--exe-path is not set")
+
+        exe_path = Path(exe_path_option).resolve()
+        if not exe_path.is_file():
             raise FileNotFoundError(f"InChI executable not found at {exe_path}.")
 
         input_path = tmp_path.joinpath("input")
@@ -54,7 +58,7 @@ def run_inchi_exe(request, tmp_path: Path) -> Callable:
 
         result = subprocess.run(
             [
-                exe_path,
+                exe_path_option,
                 *[input_path, output_path, log_path, problem_path],
                 *adapt_args_to_platform(args),
             ],
